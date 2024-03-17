@@ -1,0 +1,9 @@
+[submodule "whisper-asr-webservice"]
+	path = whisper-asr-webservice
+	url = https://github.com/ahmetoner/whisper-asr-webservice
+[submodule "GanyuTTS"]
+	path = GanyuTTS
+	url = https://github.com/legekka/GanyuTTS
+[submodule "cria"]
+	path = cria
+	url = https://github.com/AmineDiro/cria
