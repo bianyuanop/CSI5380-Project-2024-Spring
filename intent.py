@@ -45,6 +45,10 @@ ASSISTANT:'''
 Here user want to open application {app}, and you have requested the operating system to open this app, the response from the operating system is: {open_result}
 Please answer if you have opened the app or not.
 ASSISTANT:'''
+    },
+    'OOS': {
+        'desc': 'fill only when other intents are not seem correct to fill',
+        'slots': {}
     }
 }
 
