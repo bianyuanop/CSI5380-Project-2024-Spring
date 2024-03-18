@@ -24,8 +24,8 @@ def open_youtube(video_desc: str):
 def play_music(author: str, music: str):
     musics = [
         {
-            'author': 'Jay Chou',
-            'music': 'xxx'
+            'author': 'The Weeknd',
+            'music': 'Blinding Lights'
         }
     ] 
 

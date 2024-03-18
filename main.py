@@ -62,6 +62,7 @@ def trigger_action_response_gen(intention) -> str:
     slots = intention['slots']
     print(f'intent: {_intent}, slots: {slots}')
 
+    response_text = "Sorry, I don't understand. Can you repeat again"
     if _intent == 'check-weather':
         temp = actions.check_weather(slots['location'])
         print(temp)
@@ -70,12 +71,33 @@ def trigger_action_response_gen(intention) -> str:
             'location': slots['location'],
             'temperature': temp
         })
+    elif _intent == 'open-youtube':
+        video = actions.open_youtube(slots['video'])
+        print(video)
+        video_open_result = f"opened video `{video['title']}` at `{video['link']}`"
 
-        print(f'responding user with: {response_text}')
-
-        return response_text
+        response_text = intent.gen_response(_intent, {
+            'video_open_result': video_open_result            
+        })
+    elif _intent == 'play-music':
+        music = actions.play_music(slots['author'], slots['music'])
+        music_open_result = f"played music `{music['music']}` by `{music['author']}` for you"
+        print(music_open_result) 
+        response_text = intent.gen_response(_intent, {
+            'music_open_result': music_open_result            
+        })
+    elif _intent == 'open-app':
+        app = actions.open_app(slots['application']) 
+        open_result = f"opened app `{app}`"
+        response_text = intent.gen_response(_intent, {
+            'app': app,
+            'open_result': open_result
+        })
     else:
-        return "Sorry, I don't understant. Can you repeat again"
+        response_text = "Sorry, I don't understand. Can you repeat again"
+
+    print(f'responding user with: {response_text}')
+    return response_text
 
 def tts(text: str):
     sid = 22
