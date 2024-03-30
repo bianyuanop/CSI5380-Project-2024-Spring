@@ -37,7 +37,7 @@ Please answer if you have started playing the music the user requested.
 ASSISTANT:'''
     },
     'open-app': {
-        'desc': 'fill when user want to open application, application list: music, phone, telegram' ,
+        'desc': 'fill when user want to open application, application list: music, phone, discord' ,
         'slots': {
             'application': 'the application user want to open'
         },

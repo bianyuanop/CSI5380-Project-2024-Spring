@@ -1,6 +1,12 @@
+import os
+import subprocess
+import threading
+
 def check_weather(location: str):
     degree = {
-        'Ottawa': '10C'
+        'Ottawa': '10C',
+        'Toronto': '20C',
+        'Califolia': '25C'
     }
 
     if location not in degree:
@@ -37,10 +43,38 @@ def open_app(app: str):
     apps = [
         {
             'name': 'discord',
-            'handlerFn': lambda: print('opening discord')
+            'handlerFn': open_discord
         }
     ]
 
-    # Search operations
+    matches = [i for i in apps if i['name'] == app.lower()]
+    if len(matches) == 0:
+        return 'Err: app not exists'
+    
+    fn = matches[0]['handlerFn']
+    app_starter = threading.Thread(target=fn, name=matches[0]['name'])
+    app_starter.start()
 
     return apps[0]
+
+def open_discord() -> bool:
+    sub = run_command(['discord'])
+    if sub.returncode != 0:
+        return False
+    
+    return True
+
+def run_command(args, check=True, shell=False, cwd=None, env=None, timeout=None, capture_output=False): 
+    env = env if env else {} 
+    return subprocess.run( 
+        args, 
+        check=check, 
+        shell=shell, 
+        capture_output=capture_output, 
+        env={ 
+            **os.environ, 
+            **env 
+        }, 
+        cwd=cwd, 
+        timeout=timeout 
+    ) 
