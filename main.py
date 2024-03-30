@@ -74,7 +74,7 @@ def trigger_action_response_gen(intention) -> str:
     elif _intent == 'open-youtube':
         video = actions.open_youtube(slots['video'])
         print(video)
-        video_open_result = f"opened video `{video['title']}` at `{video['link']}`"
+        video_open_result = f"opened video `{video['title']}` at youtube"
 
         response_text = intent.gen_response(_intent, {
             'video_open_result': video_open_result            

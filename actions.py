@@ -1,6 +1,7 @@
 import os
 import subprocess
 import threading
+import webbrowser
 
 def check_weather(location: str):
     degree = {
@@ -17,23 +18,41 @@ def check_weather(location: str):
 def open_youtube(video_desc: str):
     videos = [
         {
-            'title': 'virtual assitant best practice in Python',
-            'link': 'http://youtube.com/someid',
-            'desc': 'this video elucidates how to make a virtual assistant in Python'
-        } 
+            'title': 'Python Tutorial - Python Full Course for Beginners',
+            'link': 'https://youtu.be/_uQrJ0TkZlc?si=Fa4XsqgwnhPKMW7F',
+            'desc': '''Become a Python pro! 🚀 This comprehensive tutorial takes you from beginner to hero, covering the basics, machine learning, and web development projects.
+🚀 Want to dive deeper?
+- Check out my Python mastery course: https://bit.ly/434YnGt
+- Subscribe for more awesome Python content: https://goo.gl/6PYaGF
+'''
+        },
     ]
 
-    # Search operations 
+    # TODO: Search operations 
+    webbrowser.open(videos[0]['link'])
 
     return videos[0]
 
 def play_music(author: str, music: str):
     musics = [
         {
-            'author': 'The Weeknd',
-            'music': 'Blinding Lights'
-        }
+            'author': 'Dawid Podsiadło',
+            'music': 'Let You Down',
+            'link': 'https://youtu.be/BnnbP7pCIvQ?si=IfjrUvuEWaKUMPfp',
+        },
+        {
+            'author': 'ARIANNE',
+            'music': 'KOMM, SUSSER TOD',
+            'link': 'https://youtu.be/hoKluzn07eQ?si=BrR7LTOafeCRdG3p'
+        },
+        {
+            'author': 'ARIANNE',
+            'music': 'Midnight City',
+            'link': 'https://youtu.be/dX3k_QDnzHE?si=LQRAAJxU2Gz1Fjsf'
+        },
     ] 
+
+    webbrowser.open(musics[0]['link'])
 
     # Search operations
 
@@ -63,6 +82,9 @@ def open_discord() -> bool:
         return False
     
     return True
+
+def open_website(url: str):
+    pass
 
 def run_command(args, check=True, shell=False, cwd=None, env=None, timeout=None, capture_output=False): 
     env = env if env else {} 
